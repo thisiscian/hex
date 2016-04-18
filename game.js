@@ -35,9 +35,9 @@ var Game=function Game(properties) {
 		this_.onMouseDownAfter(ev);
 	});
 	document.addEventListener('touchstart',function(ev){
-		var a=this_.mouse_context.a.toAbs(ev.touches[0].clientX,ev.touches[0].clientY)
-		var r=this_.mouse_context.a.toRel(a,this_.mouse_context.r.rescale)
-		var h=this_.mouse_context.a.toHex(a,this_.mouse_context.h.rescale,this_.mouse_context.h.hexRadius)
+		var a=this_.context.a.toAbs(ev.touches[0].clientX,ev.touches[0].clientY)
+		var r=this_.context.a.toRel(a,this_.context.r.rescale)
+		var h=this_.context.a.toHex(a,this_.context.h.rescale,this_.context.h.hexRadius)
 		this_.mouse={a:a,r:r,h:h}
 		this_.mouse_down_time=new Date();
 		this_.mouse_button=1
@@ -59,14 +59,14 @@ var Game=function Game(properties) {
 	document.addEventListener('touchmove',function(ev){
 		this_.mouse_button=0
 		this_.mouse_down_time=0
-		var a=this_.mouse_context.a.toAbs(-100,-100)
-		var r=this_.mouse_context.a.toRel(a,this_.mouse_context.r.rescale)
-		var h=this_.mouse_context.a.toHex(a,this_.mouse_context.h.rescale,this_.mouse_context.h.hexRadius)
+		var a=this_.context.a.toAbs(-100,-100)
+		var r=this_.context.a.toRel(a,this_.context.r.rescale)
+		var h=this_.context.a.toHex(a,this_.context.h.rescale,this_.context.h.hexRadius)
 		this_.mouse={a:a,r:r,h:h}
 	});
 	document.addEventListener('touchend',function(ev){
-		this_.onMouseUpBefore(ev);
-		this_.onMouseUpAfter(ev);
+		this_.onMouseUpBefore(ev.changedTouches[0]);
+		this_.onMouseUpAfter(ev.changedTouches[0]);
 		this_.mouse_button=0
 		this_.mouse_down_time=0
 		ev.preventDefault()
