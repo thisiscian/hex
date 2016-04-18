@@ -251,6 +251,7 @@ Object.defineProperties(AbsContext.prototype,{
 		var S=radius*3, H=Math.sqrt(3)*radius*2;
 		var X=(2*a.x-this.width)/(this.min*rescale), Y=(2*a.y-this.height)/(this.min*rescale)
 		var a=Math.floor(X/S), b=Math.floor(Y/H)
+
 		var x=X-a*S, y=Y-b*H;
 		b-=0.5*(a-Math.abs(a)%2)
 		if(a%2==0) {

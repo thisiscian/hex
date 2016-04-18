@@ -1,19 +1,23 @@
 var Game=function Game(properties) {
 	var this_=this;
-	this.context=new Context(undefined,{
-		width:window.innerWidth*0.99,
-		height:window.innerHeight*0.98,
-	});
 	this.mouse_down_time=0
 	this.interval=undefined;
 	O.call(this,properties,true);
+
+	
+	this.context=new Context(undefined,
+		this.getProperties({
+//			width:window.innerWidth*0.99,
+//			height:window.innerHeight*0.98,
+		})
+	);
+
 	document.body.style.background=this.background;
 	document.body.style.margin=0;
 	document.body.style.width="100%";
 	document.body.style.height="100%";
+	document.body.style.overflow='hidden'
 	window.addEventListener('throttledResize',function(ev){
-	//	this_.context.width=window.innerWidth*0.97;
-	//	this_.context.height=window.innerHeight*0.97;
 		this_.onResize();
 	});
 	document.addEventListener('contextmenu',function(ev){ev.preventDefault()});

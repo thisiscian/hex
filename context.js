@@ -1,6 +1,8 @@
 var Context=function Context(context, properties) {
 	if(typeof(context)==='undefined')
 		context=document.createElement('canvas').getContext('2d')
+	if(typeof(properties)==='undefined')
+		properties={}
 
 	this.context=context;
 	O.call(this,properties,true);
